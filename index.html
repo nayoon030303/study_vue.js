@@ -10,8 +10,10 @@
 </head>
 <body>
     <div id="app">
-        {{ person.name}} {{person.age}} <br>
+        <!-- {{ person.name}} {{person.age}} <br> -->
         {{nextYear('안녕하세요')}}
+        <input v-bind:type="type" :value="getMirimLink()">
+        <a :href="link">미림여자정보과학고등학교!</a>
     </div>
 
     <div id="app-2">
@@ -39,11 +41,17 @@
                 person:{
                     name: 'Belle',
                     age: 19
-                }
+                },
+                inputData:'hihi',
+                type:'number',
+                link:'https://www.e-mirim.hs.kr/'
             },
             methods: {
+                getMirimLink(){
+                    return this.link+'main.do';
+                },
                 nextYear: function(greeting){
-                    return greeting+':'+ this.person.name+'는 내년에'+(this.person.age+1)+'살 입니다.'
+                    return greeting+':'+ this.person.name+'는 내년에'+(this.person.age+1)+'살 입니다.';
                 },
                 otherMethod: function(){
                     this.nextYear();
