@@ -17,7 +17,12 @@
 
         {{year}}<br>
         <button v-on:click="plus">더하기</button>
-        <button v-on:click="minus">빼기</button>
+        <button v-on:click="minus">빼기</button> <br>
+
+        <form v-on:submit.prevent="submit">
+            <input type="text"><br>
+            <button type="submit">submit</button>
+        </form>
     </div>
 
     
@@ -52,6 +57,10 @@
                 },
                 minus(){
                     this.year-=1;
+                },
+                submit(){
+                    alert("submitted");
+                    console.log('hello');
                 }
             }
         })
