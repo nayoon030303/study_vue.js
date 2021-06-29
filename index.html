@@ -13,7 +13,8 @@
        
         <form v-on:submit.prevent="submit">
             <!--v-on은 @로 대체가능 -->
-            <input type="text" :value="text" v-on:keyup="updateText"><br>
+            <!-- <input type="text" :value="text" v-on:keyup="updateText"><br> -->
+            <input type="text" v-model='text'><br><!--v-model은 양방향 데이터 바인딩 v-model: value 값 -->
             {{text}}<br>
             <button type="submit">submit</button>
         </form>
@@ -40,10 +41,10 @@
                     alert("submitted");
                     console.log('hello');
                 },
-                updateText(event){
-                    this.text = event.target.value;
+                // updateText(event){
+                //     this.text = event.target.value;
                    
-                }
+                // }
             }
         })
 
