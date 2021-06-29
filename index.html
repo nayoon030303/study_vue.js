@@ -10,19 +10,15 @@
 </head>
 <body>
     <div id="app">
-        <!-- {{ person.name}} {{person.age}} <br> -->
-        <!-- {{nextYear('안녕하세요')}}
-        <input v-bind:type="type" :value="getMirimLink()">
-        <a :href="link">미림여자정보과학고등학교!</a> -->
-
-        {{year}}<br>
-        <button v-on:click="plus">더하기</button>
-        <button v-on:click="minus">빼기</button> <br>
-
+       
         <form v-on:submit.prevent="submit">
-            <input type="text"><br>
+            <!--v-on은 @로 대체가능 -->
+            <input type="text" :value="text" v-on:keyup="updateText"><br>
+            {{text}}<br>
             <button type="submit">submit</button>
         </form>
+       
+
     </div>
 
     
@@ -30,28 +26,10 @@
         let app = new Vue({
             el:'#app',
             data:{
-                person:{
-                    name: 'Belle',
-                    age: 19
-                },
-                inputData:'hihi',
-                type:'number',
-                link:'https://www.e-mirim.hs.kr/',
-                year: 2021
+                year: 2021,
+                text: 'text'
             },
             methods: {
-                getMirimLink(){
-                    return this.link+'main.do';
-                },
-                nextYear: function(greeting){
-                    return greeting+':'+ this.person.name+'는 내년에'+(this.person.age+1)+'살 입니다.';
-                },
-                otherMethod: function(){
-                    this.nextYear();
-                },
-                alert(){
-                    alert('hi Belle!');
-                },
                 plus(){
                     this.year+=1;
                 },
@@ -61,6 +39,10 @@
                 submit(){
                     alert("submitted");
                     console.log('hello');
+                },
+                updateText(event){
+                    this.text = event.target.value;
+                   
                 }
             }
         })
