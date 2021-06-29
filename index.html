@@ -19,6 +19,11 @@
             <button type="submit">submit</button>
         </form>
        
+        {{number+1}}<br>
+        {{message}}<br>
+        {{reverseMessage()}}<br>
+            
+        <button @click="changeMessage">Click</button>
 
     </div>
 
@@ -28,7 +33,9 @@
             el:'#app',
             data:{
                 year: 2021,
-                text: 'text'
+                text: 'text',
+                number:1,
+                message: '김나윤'
             },
             methods: {
                 plus(){
@@ -41,9 +48,17 @@
                     alert("submitted");
                     console.log('hello');
                 },
-                // updateText(event){
-                //     this.text = event.target.value;
-                   
+                reverseMessage(){
+                    return this.message.split('').reverse().join('');
+                },
+                changeMessage(){
+                    this.message = 'Belle';
+                }
+                
+            },
+            computed:{
+                // reverseMessage(){
+                //     return this.message.split('').reverse().join('');
                 // }
             }
         })
