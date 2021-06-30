@@ -10,21 +10,11 @@
 </head>
 <body>
     <div id="app">
-       
-        <form v-on:submit.prevent="submit">
-            <!--v-on은 @로 대체가능 -->
-            <!-- <input type="text" :value="text" v-on:keyup="updateText"><br> -->
-            <input type="text" v-model='text'><br><!--v-model은 양방향 데이터 바인딩 v-model: value 값 -->
-            {{text}}<br>
-            <button type="submit">submit</button>
-        </form>
-       
-        {{number+1}}<br>
+              
         {{message}}<br>
-        {{reverseMessage()}}<br>
-            
-        <button @click="changeMessage">Click</button>
 
+        <button @click="changeMessage">Click</button><br>
+        {{updated}}
     </div>
 
     
@@ -35,7 +25,8 @@
                 year: 2021,
                 text: 'text',
                 number:1,
-                message: '김나윤'
+                message: '김나윤',
+                updated:'아니요'
             },
             methods: {
                 plus(){
@@ -57,9 +48,15 @@
                 
             },
             computed:{
-                // reverseMessage(){
-                //     return this.message.split('').reverse().join('');
-                // }
+                reverseMessage(){
+                    return this.message.split('').reverse().join('');
+                }
+            },
+            watch:{
+                message(newVal,oldVal){
+                    console.log(newVal,oldVal);
+                    this.updated ='네';
+                }
             }
         })
 
