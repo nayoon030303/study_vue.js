@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue 기초 익히기</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .red{
+            color: red;
+        }
 
+        .bold{
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-              
-        {{message}}<br>
-
-        <button @click="changeMessage">Click</button><br>
-        {{updated}}
+        <!-- <div :class="{red: isRed, bold:isBold}">Hello</div> -->
+        <div :style="{color:red, fontSize:size}">Hello</div>
+        <!-- <button @click='update'>update</button> -->
     </div>
 
     
@@ -22,41 +28,23 @@
         let app = new Vue({
             el:'#app',
             data:{
-                year: 2021,
-                text: 'text',
-                number:1,
-                message: '김나윤',
-                updated:'아니요'
+               isRed:false,
+               isBold:false,
+               red:'red',
+               size:'30px'
             },
             methods: {
-                plus(){
-                    this.year+=1;
-                },
-                minus(){
-                    this.year-=1;
-                },
-                submit(){
-                    alert("submitted");
-                    console.log('hello');
-                },
-                reverseMessage(){
-                    return this.message.split('').reverse().join('');
-                },
-                changeMessage(){
-                    this.message = 'Belle';
-                }
+               update(){
+                   this.isRed = !this.isRed;
+                   this.isBold = !this.isBold;
+               }
                 
             },
             computed:{
-                reverseMessage(){
-                    return this.message.split('').reverse().join('');
-                }
+               
             },
             watch:{
-                message(newVal,oldVal){
-                    console.log(newVal,oldVal);
-                    this.updated ='네';
-                }
+                
             }
         })
 
