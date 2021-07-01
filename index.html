@@ -18,7 +18,7 @@
 </head>
 <body>
     <div id="app">
-        <template v-if="number===1">
+        <!-- <template v-if="number===1">
             <div>1</div>
             <div>2</div>
             <div>3</div>
@@ -26,7 +26,17 @@
       
         <div v-else-if="number===2">Yes</div>
         <div v-else>No</div>
-        <button @click="increaseNumber">클릭</button>{{number}}
+        <button @click="increaseNumber">클릭</button>{{number}} -->
+
+        <!--
+             v-show: display:none
+             v-if: x
+        
+        -->
+
+        <div v-show="show">Yes</div>
+        <br>
+        <button @click="toggleShow">클릭</button>{{show}}
     </div>
 
     
