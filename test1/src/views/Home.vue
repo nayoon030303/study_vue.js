@@ -1,22 +1,32 @@
 <template>
   <div>
     <h1>This is Home Page</h1>
-    <BelleCoder title="Home입니다." name="Belle Coder"/>
-
+    <form action="">
+      <!-- <InputFeild :name="name" @update-name="name=$event.target.value"></InputFeild> -->
+      <InputFeild v-model="name"></InputFeild>
+       <br>
+      <button>Submit</button>
+    </form>
+    {{name}}
   </div>
 </template>
 
 <script>
-import BelleCoder from '@/components/Belle.vue';
+
+ import InputFeild from '@/components/InputField.vue';
 
 export default{
   components:{
-    BelleCoder
+    InputFeild
   },
-
   data(){
     return{
-      name: 'Belle'
+      name: ''
+    }
+  },
+  methods:{
+    updateName(name){
+      this.name = name;
     }
   }
 }
