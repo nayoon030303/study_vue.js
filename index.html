@@ -18,34 +18,33 @@
 </head>
 <body>
     <div id="app">
-        <!-- <template v-if="number===1">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-        </template>
       
-        <div v-else-if="number===2">Yes</div>
-        <div v-else>No</div>
-        <button @click="increaseNumber">클릭</button>{{number}} -->
-
-        <!--
-             v-show: display:none
-             v-if: x
-        
-        -->
-
-        <div v-show="show">Yes</div>
+        <div>
+            {{people[0].name}} {{people[0].age}}
+        </div>
+        <div>
+            {{people[1].name}} {{people[1].age}}
+        </div>
+        <div>
+            {{people[2].name}} {{people[2].age}}
+        </div>
         <br>
-        <button @click="toggleShow">클릭</button>{{show}}
+        <div v-for="(person,index) in people" :key="person.name">
+            {{index}} {{person.name}} {{person.age}}
+        </div>
     </div>
-
-    
     <script>
         let app = new Vue({
             el:'#app',
             data:{
                 show:true,
-                number:0
+                number:0,
+                people:[
+                    {name:'a', age:19},
+                    {name:'b', age:20},
+                    {name:'c', age:21},
+                    {name:'d', age:22 },
+                ]
             },
             methods:{
                 toggleShow(){
