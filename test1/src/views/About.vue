@@ -9,6 +9,11 @@
 import BelleCoder from '@/components/Belle.vue';
 
 export default{
+  data(){
+    return{
+      title:5
+    }
+  },
   components:{
     BelleCoder
   }
