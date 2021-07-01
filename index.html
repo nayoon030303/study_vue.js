@@ -18,40 +18,34 @@
 </head>
 <body>
     <div id="app">
-      
-        <div>
-            {{people[0].name}} {{people[0].age}}
-        </div>
-        <div>
-            {{people[1].name}} {{people[1].age}}
-        </div>
-        <div>
-            {{people[2].name}} {{people[2].age}}
-        </div>
-        <br>
-        <div v-for="(person,index) in people" :key="person.name">
-            {{index}} {{person.name}} {{person.age}}
-        </div>
+        {{name}} <br>
+        <button @click="changeText">Click</button>
+    </div>
+    <div id="app-1">
+        {{name}} <br>
+        <button @click="changeText">Click</button>
     </div>
     <script>
         let app = new Vue({
             el:'#app',
             data:{
-                show:true,
-                number:0,
-                people:[
-                    {name:'a', age:19},
-                    {name:'b', age:20},
-                    {name:'c', age:21},
-                    {name:'d', age:22 },
-                ]
+                name:"Belle"
             },
             methods:{
-                toggleShow(){
-                    this.show = !this.show;
-                },
-                increaseNumber(){
-                    this.number++;
+                changeText(){
+                    app1.name = "Belle Update"
+                }
+            }
+        })
+
+        let app1 = new Vue({
+            el:"#app-1",
+            data:{
+                name:"김나윤"
+            },
+            methods:{
+                changeText(){
+                    app.name= "김나윤 Update"
                 }
             }
         })
