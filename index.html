@@ -18,36 +18,72 @@
 </head>
 <body>
     <div id="app">
-        {{name}} <br>
+        <!-- {{name}} <br>
         <button @click="changeText">Click</button>
+        <hr> -->
+
+        <belle-button></belle-button>
     </div>
+    <br>
+
     <div id="app-1">
-        {{name}} <br>
+        <!-- {{name}} <br>
         <button @click="changeText">Click</button>
+        <hr> -->
+        
+        <belle-button></belle-button>
     </div>
+
     <script>
-        let app = new Vue({
-            el:'#app',
-            data:{
-                name:"Belle"
+
+        Vue.component("hello-world",{
+            template:`<div>Hello World</div>`,
+
+        });
+      
+        Vue.component('belle-button',{
+            template:`
+            <div>
+                {{name}} <br>
+                <button @click="changeText">Click</button>
+                <hello-world></hello-world>
+            </div> 
+            `,
+            data(){
+                return{
+                    name: "Belle"
+                }
             },
             methods:{
                 changeText(){
-                    app1.name = "Belle Update"
+                    this.name = "Belle Update";
                 }
             }
+        });
+
+        const app = new Vue({
+            el:"#app",
+            // data:{
+            //     name:"Belle"
+            // },
+            // methods:{
+            //     changeText(){
+            //         this.name= "Belle Update"
+            //     }
+            // }
+            
         })
 
-        let app1 = new Vue({
+        const app1 = new Vue({
             el:"#app-1",
-            data:{
-                name:"김나윤"
-            },
-            methods:{
-                changeText(){
-                    app.name= "김나윤 Update"
-                }
-            }
+            // data:{
+            //     name:"Belle"
+            // },
+            // methods:{
+            //     changeText(){
+            //         this.name= "Belle Update"
+            //     }
+            // }
         })
 
     </script>
