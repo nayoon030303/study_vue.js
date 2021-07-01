@@ -26,22 +26,40 @@
     </div>
     <br>
 
-    <div id="app-1">
-        <!-- {{name}} <br>
-        <button @click="changeText">Click</button>
-        <hr> -->
+   <div id="app-1">
         
-        <belle-button></belle-button>
-    </div>
+        
+      <belle-button></belle-button>
+    </div> 
 
     <script>
 
-        Vue.component("hello-world",{
+        Vue.component("hello-world",{ //전역
             template:`<div>Hello World</div>`,
 
         });
       
-        Vue.component('belle-button',{
+        // Vue.component('belle-button',{
+        //     template:`
+        //     <div>
+        //         {{name}} <br>
+        //         <button @click="changeText">Click</button>
+        //         <hello-world></hello-world>
+        //     </div> 
+        //     `,
+        //     data(){
+        //         return{
+        //             name: "Belle"
+        //         }
+        //     },
+        //     methods:{
+        //         changeText(){
+        //             this.name = "Belle Update";
+        //         }
+        //     }
+        // });
+
+        const BelleButton = { //지역 선언
             template:`
             <div>
                 {{name}} <br>
@@ -59,23 +77,21 @@
                     this.name = "Belle Update";
                 }
             }
-        });
+        };
 
         const app = new Vue({
             el:"#app",
-            // data:{
-            //     name:"Belle"
-            // },
-            // methods:{
-            //     changeText(){
-            //         this.name= "Belle Update"
-            //     }
-            // }
+            components:{
+                'belle-button':BelleButton
+            }
             
         })
 
         const app1 = new Vue({
             el:"#app-1",
+            components:{
+                'belle-button':BelleButton
+            }
             // data:{
             //     name:"Belle"
             // },
